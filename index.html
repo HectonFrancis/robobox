@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Robôs Boxeando</title>
+  <title>Robôs se Esmurrando</title>
   <style>
     body {
       display: flex;
@@ -33,10 +33,9 @@
       height: 100px;
       background-color: #0077cc;
       border-radius: 10px;
-      animation: bounce 1s infinite;
     }
 
-    .robot2 {
+    .robot.robot2 {
       background-color: #cc0000;
       left: calc(100% - 60px);
     }
@@ -57,32 +56,58 @@
     .arm {
       width: 20px;
       height: 20px;
-      top: 20px;
       background-color: yellow;
       animation: punch 1s infinite alternate;
     }
 
     .arm.left {
+      top: 40px;
       left: -10px;
     }
 
     .arm.right {
+      top: 40px;
       right: -10px;
     }
 
     .robot2 .arm {
-      animation: punch 1s infinite alternate-reverse;
+      animation: punch-reverse 1s infinite alternate;
     }
 
     @keyframes punch {
       0% { transform: translateX(0); }
-      50% { transform: translateX(-30px); }
+      50% { transform: translateX(50px); }
       100% { transform: translateX(0); }
     }
 
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    @keyframes punch-reverse {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(-50px); }
+      100% { transform: translateX(0); }
+    }
+
+    .impact {
+      position: absolute;
+      top: 70px;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      background-color: #ff0;
+      border-radius: 50%;
+      opacity: 0;
+      animation: impact 1s infinite alternate;
+    }
+
+    @keyframes impact {
+      50% {
+        opacity: 1;
+        transform: scale(1.5);
+        background-color: red;
+      }
+      100% {
+        opacity: 0;
+        transform: scale(1);
+      }
     }
   </style>
 </head>
@@ -98,6 +123,7 @@
       <div class="arm left"></div>
       <div class="arm right"></div>
     </div>
+    <div class="impact"></div>
   </div>
 </body>
 </html>
